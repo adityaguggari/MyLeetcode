@@ -9,13 +9,13 @@ class MyStack {
     public void push(int x) {
         queue.add(x);
         int size=queue.size();
-        for(int i=0;i<size-1;i++){
+        for(int i=0;i<size-1;i++) {
             queue.add(queue.remove());
         }
     }
     
     public int pop() {
-        return queue.remove();
+       return queue.remove();
     }
     
     public int top() {
@@ -23,7 +23,7 @@ class MyStack {
     }
     
     public boolean empty() {
-        return queue.isEmpty();
+        return queue.isEmpty();    
     }
 }
 
