@@ -32,8 +32,9 @@ class Solution {
             }
         }
         
-        root.left = build(inorder, inStart, inIndex - 1, postorder, postStart, postStart + inIndex - inStart - 1);
-        root.right = build(inorder, inIndex + 1, inEnd, postorder, postStart + inIndex - inStart, postEnd -1);
+        int numLeft = inIndex - inStart;
+        root.left = build(inorder, inStart, inIndex - 1, postorder, postStart, postStart + numLeft - 1);
+        root.right = build(inorder, inIndex + 1, inEnd, postorder, postStart + numLeft, postEnd -1);
             
         return root;
     }
