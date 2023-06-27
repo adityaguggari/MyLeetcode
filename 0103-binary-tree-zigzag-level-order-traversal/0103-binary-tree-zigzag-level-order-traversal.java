@@ -18,30 +18,30 @@ class Solution {
         List<List<Integer>> result = new ArrayList<>();
         if(root == null) return result;
         
-        Queue<TreeNode> queue= new LinkedList<>();
-        queue.add(root);
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
         boolean LeftToRight = true;
-        while(!queue.isEmpty()) {
-            int size = queue.size();
-            List<Integer> currentlevel = new ArrayList<>();
-            for(int i = 0; i < size ; i++) {
-                TreeNode current = queue.remove();
+        while(!q.isEmpty()) {
+            int size = q.size();
+            List<Integer> currentlist = new ArrayList<>();
+            for(int i=0;i<size;i++) {
+                TreeNode current = q.remove();
                 if(LeftToRight == true) {
-                    currentlevel.add(current.val);
+                    currentlist.add(current.val);
                 }
                 else {
-                    currentlevel.add(0, current.val);
+                    currentlist.add(0,current.val);
                 }
                 
-                if(current.left!=null) {
-                    queue.add(current.left);
+                if(current.left != null) {
+                    q.add(current.left);
                 }
-                if(current.right!=null) {
-                    queue.add(current.right);
+                if(current.right != null) {
+                    q.add(current.right);
                 }
             }
             LeftToRight = !LeftToRight;
-            result.add(currentlevel);
+            result.add(currentlist);
         }
         return result;
     }
