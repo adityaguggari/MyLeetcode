@@ -15,16 +15,18 @@
  */
 class Solution {
     public TreeNode bstFromPreorder(int[] preorder) {
-        return build(preorder, new int[]{0}, Integer.MAX_VALUE);
+       return helper(preorder, new int[]{0}, Integer.MAX_VALUE);
     }
     
-    TreeNode build(int[] preorder, int[] i, int bound) {
-        if(i[0] == preorder.length || preorder[i[0]] > bound) return null;
+    TreeNode helper(int[] preorder, int[] i, int bound) {
+        if(i[0] > preorder.length-1 || preorder[i[0]] > bound) return null;
+        
         TreeNode root = new TreeNode(preorder[i[0]]);
         i[0]++;
-        root.left = build(preorder, i, root.val);
-        root.right = build(preorder, i, bound);
+        root.left = helper(preorder, i, root.val);
+        root.right = helper(preorder, i , bound);
         return root;
+        
     }
 }
 
