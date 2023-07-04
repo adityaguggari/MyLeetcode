@@ -21,8 +21,7 @@ class Node {
 class Solution {
      HashMap<Integer, Node> map = new HashMap<>();
     public Node cloneGraph(Node node) {
-       
-        if(node == null) return null;
+       if(node == null) return null;
         if(map.containsKey(node.val)) return map.get(node.val);
         Node newnode = new Node(node.val, new ArrayList<Node>());
         map.put(node.val, newnode);
