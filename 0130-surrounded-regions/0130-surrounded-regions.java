@@ -1,28 +1,30 @@
 class Solution {
     public void solve(char[][] board) {
-        int row = board.length;
-        int col=board[0].length;
+        int rows = board.length-1;
+        int cols = board[0].length-1;
         
-        for(int i = 0 ; i < col ; i++) {
+        // check for 1st row and last row
+        for(int i = 0 ; i < cols ; i++) {
             if(board[0][i] == 'O') dfs(board, 0, i);
-            if(board[row-1][i] == 'O') dfs(board, row - 1, i);
-        } 
-        
-        for(int i=0;i<row;i++) {
-            if(board[i][0] == 'O') dfs(board, i, 0);
-            if(board[i][col-1] == 'O') dfs(board, i, col-1);
+            if(board[rows][i] == 'O') dfs(board, rows-1, i);
         }
         
-        for(int i = 0 ; i < row ;i++) {
-            for(int j = 0 ; j < col ; j++) {
-                if( board[i][j] == 'O') board[i][j] = 'X';
+        //check for 1st col and last col
+        for(int i = 0 ; i < rows ; i++) {
+            if(board[i][0] == 'O') dfs(board, i, 0);
+            if(board[i][cols] == 'O') dfs(board, i, cols-1);
+        }
+        
+        for(int i = 0 ; i < rows ; i++) {
+            for(int j = 0 ; j < cols ; j++) {
+                if(board[i][j] == 'O') board[i][j] = 'X';
                 if(board[i][j] == 'T') board[i][j] = 'O';
             }
         }
     }
     
     void dfs(char[][] board, int r, int c) {
-        if(r<0 || r>=board.length || c<0 || c>=board[0].length || board[r][c] != 'O') {
+        if( r<0 || r>=board.length-1 || c<0 || c>=board[r].length-1 || board[r][c] != 'O') {
             return;
         }
         
