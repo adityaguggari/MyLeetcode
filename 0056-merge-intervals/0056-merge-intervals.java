@@ -1,12 +1,12 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
-       Arrays.sort(intervals, (int[] arr1, int[] arr2) -> Integer.compare(arr1[0], arr2[0]));
+        List<int[]> res = new ArrayList<>();
         
-       List<int[]> result = new ArrayList<>();
+        Arrays.sort(intervals, ((int[] arr0, int[] arr1) -> Integer.compare(arr0[0], arr1[0])));
         
         int[] current_interval = intervals[0];
-        result.add(current_interval);
-        for(int[] interval:intervals) {
+        res.add(current_interval);
+        for(int[] interval : intervals) {
             int current_begin = current_interval[0];
             int current_end = current_interval[1];
             int next_begin = interval[0];
@@ -14,12 +14,12 @@ class Solution {
             
             if(current_end >= next_begin) {
                 current_interval[1] = Math.max(current_end, next_end);
-            }
+             }
             else {
                 current_interval = interval;
-                result.add(current_interval);
+                res.add(current_interval);
             }
         }
-        return result.toArray(new int[result.size()][]);
+        return res.toArray(new int[res.size()][]);
     }
 }
