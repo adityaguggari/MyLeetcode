@@ -15,7 +15,7 @@ class Solution {
             }
         }
             
-            if(intervals!=null) {
+            if(newInterval!=null) {
                 result.add(newInterval);
             }
         
