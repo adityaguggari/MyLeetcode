@@ -12,7 +12,7 @@ class Solution {
         
         for(int i = 1 ; i < n ; i++) {
             for(int j = 0 ; j < i ; j++) {
-                if(nums[j] < nums[i]) {
+                if(nums[i] > nums[j]) {
                     dp[i] = Math.max(dp[i], 1 + dp[j]);
                 }
             }
